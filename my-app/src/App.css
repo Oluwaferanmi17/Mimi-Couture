@@ -1,0 +1,9 @@
+/* 1. Import the Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+
+/* 2. Import Tailwind */
+@import "tailwindcss";
+@theme {
+  /* This automatically creates the 'font-lora' utility */
+  --font-lora: "Lora", serif;
+}
