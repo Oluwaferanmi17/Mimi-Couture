@@ -1,5 +1,5 @@
 "use client";
-
+import { Link } from "react-router-dom";
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -115,7 +115,10 @@ export default function ContactPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.85, ease: [0.23, 0.86, 0.39, 0.96] },
+      transition: {
+        duration: 0.85,
+        ease: [0.23, 0.86, 0.39, 0.96] as [number, number, number, number],
+      },
     },
   };
 
@@ -170,9 +173,9 @@ export default function ContactPage() {
             color: "#f0e8dc",
           }}
         >
-          Maison Drape
+          Mimi Couture
         </span>
-        <ul
+        {/* <ul
           className="hidden md:flex gap-8"
           style={{
             fontFamily: "'Jost', sans-serif",
@@ -194,6 +197,38 @@ export default function ContactPage() {
               </li>
             ),
           )}
+        </ul> */}
+        <ul
+          className="hidden md:flex gap-8"
+          style={{
+            fontFamily: "'Jost', sans-serif",
+            fontSize: "0.7rem",
+            letterSpacing: "0.3em",
+          }}
+        >
+          {[
+            { name: "Home", path: "/" },
+            { name: "Collections", path: "/collections" },
+            { name: "Services", path: "/services" },
+            { name: "Lookbook", path: "/lookbook" },
+            { name: "Atelier", path: "/atelier" },
+            { name: "Contact", path: "/contact" },
+          ].map((item) => (
+            <li key={item.name}>
+              <Link
+                to={item.path}
+                className="uppercase cursor-pointer transition-colors duration-300"
+                style={{
+                  color:
+                    item.path === "/contact"
+                      ? "#b8860b"
+                      : "rgba(201,169,110,0.6)",
+                }}
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
 
@@ -230,7 +265,7 @@ export default function ContactPage() {
               marginBottom: "1.5rem",
             }}
           >
-            MAISON DRAPE — BEGIN YOUR JOURNEY
+            Mimi Couture — BEGIN YOUR JOURNEY
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}

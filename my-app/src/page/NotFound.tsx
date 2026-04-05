@@ -13,7 +13,7 @@ const containerVariants = {
     y: 0,
     transition: {
       duration: 0.7,
-      ease: [0.43, 0.13, 0.23, 0.96],
+      ease: [0.43, 0.13, 0.23, 0.96] as [number, number, number, number],
       delayChildren: 0.1,
       staggerChildren: 0.12,
     },
@@ -25,7 +25,10 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.65, ease: [0.43, 0.13, 0.23, 0.96] },
+    transition: {
+      duration: 0.65,
+      ease: [0.43, 0.13, 0.23, 0.96] as [number, number, number, number],
+    },
   },
 };
 
@@ -41,7 +44,10 @@ const numberVariants = {
     x: 0,
     y: 0,
     rotate: 0,
-    transition: { duration: 0.85, ease: [0.43, 0.13, 0.23, 0.96] },
+    transition: {
+      duration: 0.85,
+      ease: [0.43, 0.13, 0.23, 0.96] as [number, number, number, number],
+    },
   },
 };
 
@@ -51,7 +57,10 @@ const scissorsVariants = {
     scale: 1,
     opacity: 1,
     rotate: 0,
-    transition: { duration: 0.7, ease: [0.43, 0.13, 0.23, 0.96] },
+    transition: {
+      duration: 0.7,
+      ease: [0.43, 0.13, 0.23, 0.96] as [number, number, number, number],
+    },
   },
   floating: {
     rotate: [-12, 12],
@@ -143,7 +152,7 @@ export default function NotFoundPage() {
             textDecoration: "none",
           }}
         >
-          Maison Drape
+          Mimi Couture
         </Link>
       </div>
 
@@ -379,7 +388,7 @@ export default function NotFoundPage() {
                 userSelect: "none",
               }}
             >
-              — Maison Drape, Lagos
+              — Mimi Couture, Lagos
             </motion.p>
           </motion.div>
         </AnimatePresence>

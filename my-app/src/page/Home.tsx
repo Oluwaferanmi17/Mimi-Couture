@@ -18,7 +18,7 @@ const TailoringContent = () => (
         className="text-xs tracking-[0.4em] uppercase text-stone-400"
         style={{ fontFamily: "'Jost', sans-serif" }}
       >
-        Est. 2008
+        Est. 2018
       </span>
       <div className="h-px flex-1 bg-stone-300" />
     </div>
@@ -28,12 +28,12 @@ const TailoringContent = () => (
       {[
         {
           number: "01",
-          title: "Bespoke Suits",
+          title: "Bespoke Outfit",
           desc: "Hand-cut and finished to your exact measurements. Every seam, every stitch — an expression of who you are.",
         },
         {
           number: "02",
-          title: "Bridal & Evening",
+          title: "Occasion-Based Outfit",
           desc: "Gowns and occasion wear crafted from the finest silks, charmeuse, and duchess satin for your most memorable moments.",
         },
         {
@@ -79,7 +79,7 @@ const TailoringContent = () => (
         className="block mt-5 text-xs tracking-[0.4em] uppercase text-amber-600"
         style={{ fontFamily: "'Jost', sans-serif" }}
       >
-        — Atelier Maison Drape
+        — Atelier Mimi Couture
       </span>
     </div>
 
@@ -208,6 +208,7 @@ export default function Home() {
           {[
             { name: "Collections", path: "/collections" },
             { name: "Services", path: "/services" },
+            { name: "Lookbook", path: "/lookbook" },
             { name: "Atelier", path: "/atelier" },
             { name: "Contact", path: "/contact" },
           ].map((item) => (
@@ -224,8 +225,8 @@ export default function Home() {
       </nav>
 
       <ScrollExpandMedia
-        mediaType="image"
-        mediaSrc="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1280&auto=format&fit=crop"
+        mediaType="video"
+        mediaSrc="/videos/test.mp4"
         bgImageSrc="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1920&auto=format&fit=crop"
         title="Tailored Perfection"
         date="Couture Atelier"

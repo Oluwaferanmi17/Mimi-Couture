@@ -230,7 +230,11 @@ const ScrollExpandMedia = ({
                     transition={{ duration: 0.8, ease: "easeInOut" }}
                   >
                     <img
-                      src={previewImageSrc || mediaSrc}
+                      src={
+                        mediaType === "video"
+                          ? previewImageSrc || posterSrc || bgImageSrc
+                          : mediaSrc
+                      }
                       alt={title || "Preview"}
                       width={1280}
                       height={720}

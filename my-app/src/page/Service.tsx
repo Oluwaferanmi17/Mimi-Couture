@@ -1,4 +1,5 @@
 "use client";
+import { Link } from "react-router-dom";
 
 import { useState, useRef } from "react";
 import {
@@ -239,17 +240,26 @@ export default function ServicesPage() {
             color: "#7a6a58",
           }}
         >
-          {["Home", "Collections", "Services", "Atelier", "Contact"].map(
-            (item) => (
-              <li
-                key={item}
+          {[
+            { name: "Home", path: "/" },
+            { name: "Collections", path: "/collections" },
+            { name: "Services", path: "/services" },
+            { name: "Lookbook", path: "/lookbook" },
+            { name: "Atelier", path: "/atelier" },
+            { name: "Contact", path: "/contact" },
+          ].map((item) => (
+            <li key={item.name}>
+              <Link
+                to={item.path}
                 className="uppercase cursor-pointer hover:text-amber-700 transition-colors duration-300"
-                style={{ color: item === "Services" ? "#b8860b" : undefined }}
+                style={{
+                  color: item.path === "/services" ? "#b8860b" : undefined,
+                }}
               >
-                {item}
-              </li>
-            ),
-          )}
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
 

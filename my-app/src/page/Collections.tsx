@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   motion,
   useScroll,
@@ -11,8 +12,8 @@ import { ParallaxScrollSecond } from "../components/ui/parallax-scroll";
 // ─── Tailoring-specific collection images (Unsplash) ──────────────────────────
 const collectionCategories = [
   {
-    id: "bespoke",
-    label: "Bespoke Suits",
+    id: "Party",
+    label: "Owambe",
     tag: "SS 2025",
     description:
       "Hand-cut from English wools and Italian superfine cloths. Every canvas, every pick-stitch placed by our master tailor.",
@@ -49,8 +50,8 @@ const collectionCategories = [
     ],
   },
   {
-    id: "evening",
-    label: "Evening Wear",
+    id: "trad",
+    label: "Traditional Wear",
     tag: "Resort 2025",
     description:
       "Draped silhouettes in charmeuse and velvet for the hours after sundown. Refined, deliberate, unforgettable.",
@@ -71,6 +72,25 @@ const collectionCategories = [
     id: "alterations",
     label: "Alterations",
     tag: "Always Open",
+    description:
+      "Invisible mending, restyling and restoration. We honour the garments you love too much to let go.",
+    accent: "#9e8a78",
+    images: [
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=800&auto=format&fit=crop",
+    ],
+  },
+  {
+    id: "aso-ebi",
+    label: "Aso-Ebi",
+    tag: "Very Nigerian",
     description:
       "Invisible mending, restyling and restoration. We honour the garments you love too much to let go.",
     accent: "#9e8a78",
@@ -138,19 +158,26 @@ export default function CollectionsPage() {
             color: "#7a6a58",
           }}
         >
-          {["Home", "Collections", "Services", "Atelier", "Contact"].map(
-            (item) => (
-              <li
-                key={item}
+          {[
+            { name: "Home", path: "/" },
+            { name: "Collections", path: "/collections" },
+            { name: "Services", path: "/services" },
+            { name: "Lookbook", path: "/lookbook" },
+            { name: "Atelier", path: "/atelier" },
+            { name: "Contact", path: "/contact" },
+          ].map((item) => (
+            <li key={item.name}>
+              <Link
+                to={item.path}
                 className="uppercase cursor-pointer hover:text-amber-700 transition-colors duration-300"
                 style={{
-                  color: item === "Collections" ? "#b8860b" : undefined,
+                  color: item.path === "/collections" ? "#b8860b" : undefined,
                 }}
               >
-                {item}
-              </li>
-            ),
-          )}
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
 
@@ -348,30 +375,32 @@ export default function CollectionsPage() {
                 >
                   Book Consultation
                 </button>
-                <button
-                  style={{
-                    fontFamily: "'Jost', sans-serif",
-                    fontSize: "0.65rem",
-                    letterSpacing: "0.3em",
-                    padding: "0.85rem 2rem",
-                    background: "transparent",
-                    color: "#7a6a58",
-                    border: "1px solid #d4c4aa",
-                    cursor: "pointer",
-                    textTransform: "uppercase",
-                    transition: "border-color 0.4s, color 0.4s",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = "#b8860b";
-                    e.currentTarget.style.color = "#b8860b";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "#d4c4aa";
-                    e.currentTarget.style.color = "#7a6a58";
-                  }}
-                >
-                  View Lookbook
-                </button>
+                <Link to="/lookbook">
+                  <button
+                    style={{
+                      fontFamily: "'Jost', sans-serif",
+                      fontSize: "0.65rem",
+                      letterSpacing: "0.3em",
+                      padding: "0.85rem 2rem",
+                      background: "transparent",
+                      color: "#7a6a58",
+                      border: "1px solid #d4c4aa",
+                      cursor: "pointer",
+                      textTransform: "uppercase",
+                      transition: "border-color 0.4s, color 0.4s",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "#b8860b";
+                      e.currentTarget.style.color = "#b8860b";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = "#d4c4aa";
+                      e.currentTarget.style.color = "#7a6a58";
+                    }}
+                  >
+                    View Lookbook
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import {
   motion,
   useScroll,
@@ -822,9 +823,9 @@ export default function LookbookPage() {
             color: "#2c2218",
           }}
         >
-          Maison Drape
+          Mimi Couture
         </span>
-        <ul
+        {/* <ul
           className="hidden md:flex gap-8"
           style={{
             fontFamily: "'Jost',sans-serif",
@@ -843,6 +844,36 @@ export default function LookbookPage() {
               </li>
             ),
           )}
+        </ul> */}
+        <ul
+          className="hidden md:flex gap-8"
+          style={{
+            fontFamily: "'Jost',sans-serif",
+            fontSize: "0.7rem",
+            letterSpacing: "0.3em",
+            color: "#7a6a58",
+          }}
+        >
+          {[
+            { name: "Home", path: "/" },
+            { name: "Collections", path: "/collections" },
+            { name: "Services", path: "/services" },
+            { name: "Lookbook", path: "/lookbook" },
+            { name: "Atelier", path: "/atelier" },
+            { name: "Contact", path: "/contact" },
+          ].map((item) => (
+            <li key={item.name}>
+              <Link
+                to={item.path}
+                className="uppercase cursor-pointer hover:text-amber-700 transition-colors duration-300"
+                // style={{
+                //   color: item.path === "/collections" ? "#b8860b" : undefined,
+                // }}
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
 
@@ -892,7 +923,7 @@ export default function LookbookPage() {
               marginBottom: "1.2rem",
             }}
           >
-            MAISON DRAPE — 2025
+            MIMI COUTURE — 2025
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 40 }}

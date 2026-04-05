@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
+import { Link } from "react-router-dom";
 import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -166,7 +167,10 @@ export default function AtelierPage() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] },
+      transition: {
+        duration: 0.7,
+        ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
+      },
     },
   };
 
@@ -206,17 +210,26 @@ export default function AtelierPage() {
             color: "#7a6a58",
           }}
         >
-          {["Home", "Collections", "Services", "Atelier", "Contact"].map(
-            (item) => (
-              <li
-                key={item}
+          {[
+            { name: "Home", path: "/" },
+            { name: "Collections", path: "/collections" },
+            { name: "Services", path: "/services" },
+            { name: "Lookbook", path: "/lookbook" },
+            { name: "Atelier", path: "/atelier" },
+            { name: "Contact", path: "/contact" },
+          ].map((item) => (
+            <li key={item.name}>
+              <Link
+                to={item.path}
                 className="uppercase cursor-pointer hover:text-amber-700 transition-colors duration-300"
-                style={{ color: item === "Atelier" ? "#b8860b" : undefined }}
+                style={{
+                  color: item.path === "/atelier" ? "#b8860b" : undefined,
+                }}
               >
-                {item}
-              </li>
-            ),
-          )}
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
 
