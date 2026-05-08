@@ -68,13 +68,13 @@ const scissorsVariants = {
     transition: {
       rotate: {
         duration: 2.4,
-        ease: [0.42, 0, 0.58, 1],
+        ease: [0.42, 0, 0.58, 1] as const,
         repeat: Infinity,
         repeatType: "reverse" as const,
       },
       y: {
         duration: 1.8,
-        ease: [0.42, 0, 0.58, 1],
+        ease: [0.42, 0, 0.58, 1] as const,
         repeat: Infinity,
         repeatType: "reverse" as const,
       },
