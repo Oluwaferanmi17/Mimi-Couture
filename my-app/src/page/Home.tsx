@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ScrollExpandMedia from "../components/ui/scroll-expansion-hero";
-
+import { Menu, X } from "lucide-react";
 // ─── Tailoring-specific content shown after the hero expands ───────────────
 const TailoringContent = () => (
   <div
@@ -182,6 +182,7 @@ const TailoringContent = () => (
 
 // ─── Home Page ──────────────────────────────────────────────────────────────
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -195,33 +196,88 @@ export default function Home() {
 
       {/* Optional fixed nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex justify-between items-center mix-blend-difference">
-        <span
-          className="text-white text-lg tracking-[0.3em] uppercase"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+        <div className="flex justify-between items-center px-6 md:px-8 py-5">
+          <span
+            className="text-white text-lg tracking-[0.3em] uppercase"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
+            Mimi Couture
+          </span>
+          <ul
+            className="hidden md:flex gap-8 text-white/80 text-xs tracking-[0.25em] uppercase"
+            style={{ fontFamily: "'Jost', sans-serif" }}
+          >
+            {[
+              { name: "Collections", path: "/collections" },
+              { name: "Services", path: "/services" },
+              { name: "Lookbook", path: "/lookbook" },
+              { name: "Atelier", path: "/atelier" },
+              { name: "Contact", path: "/contact" },
+            ].map((item) => (
+              <li key={item.name}>
+                <Link
+                  to={item.path}
+                  className="hover:text-white transition-colors"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden"
+            style={{ color: "#f0e8dc" }}
+          >
+            {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-500 ${
+            isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+          style={{
+            background: "rgba(15,10,4,0.96)",
+            backdropFilter: "blur(12px)",
+            borderTop: "1px solid rgba(184,134,11,0.15)",
+          }}
         >
-          Mimi Couture
-        </span>
-        <ul
-          className="hidden md:flex gap-8 text-white/80 text-xs tracking-[0.25em] uppercase"
-          style={{ fontFamily: "'Jost', sans-serif" }}
-        >
-          {[
-            { name: "Collections", path: "/collections" },
-            { name: "Services", path: "/services" },
-            { name: "Lookbook", path: "/lookbook" },
-            { name: "Atelier", path: "/atelier" },
-            { name: "Contact", path: "/contact" },
-          ].map((item) => (
-            <li key={item.name}>
-              <Link
-                to={item.path}
-                className="hover:text-white transition-colors"
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+          <ul
+            className="flex flex-col px-6 py-6 gap-6"
+            style={{
+              fontFamily: "'Jost', sans-serif",
+              letterSpacing: "0.25em",
+              fontSize: "0.75rem",
+            }}
+          >
+            {[
+              { name: "Home", path: "/" },
+              { name: "Collections", path: "/collections" },
+              { name: "Services", path: "/services" },
+              { name: "Lookbook", path: "/lookbook" },
+              { name: "Atelier", path: "/atelier" },
+              { name: "Contact", path: "/contact" },
+            ].map((item) => (
+              <li key={item.name}>
+                <Link
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="uppercase block transition-colors duration-300"
+                  style={{
+                    color:
+                      item.path === "/home"
+                        ? "#b8860b"
+                        : "rgba(240,232,220,0.8)",
+                  }}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </nav>
 
       <ScrollExpandMedia

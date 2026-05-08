@@ -6,6 +6,7 @@ import {
   useTransform,
   AnimatePresence,
 } from "framer-motion";
+import { Menu, X } from "lucide-react";
 // import Image from "next/image";
 import { ParallaxScrollSecond } from "../components/ui/parallax-scroll";
 
@@ -110,6 +111,7 @@ const collectionCategories = [
 
 export default function CollectionsPage() {
   const [active, setActive] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -139,46 +141,101 @@ export default function CollectionsPage() {
             "linear-gradient(to bottom, rgba(247,245,242,0.95) 0%, transparent 100%)",
         }}
       >
-        <span
+        <div className="flex justify-between items-center px-6 md:px-8 py-5">
+          <span
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: "1.2rem",
+              letterSpacing: "0.3em",
+              color: "#2c2218",
+            }}
+          >
+            Mimi Couture
+          </span>
+          <ul
+            className="hidden md:flex gap-8"
+            style={{
+              fontFamily: "'Jost', sans-serif",
+              fontSize: "0.7rem",
+              letterSpacing: "0.3em",
+              color: "#7a6a58",
+            }}
+          >
+            {[
+              { name: "Home", path: "/" },
+              { name: "Collections", path: "/collections" },
+              { name: "Services", path: "/services" },
+              { name: "Lookbook", path: "/lookbook" },
+              { name: "Atelier", path: "/atelier" },
+              { name: "Contact", path: "/contact" },
+            ].map((item) => (
+              <li key={item.name}>
+                <Link
+                  to={item.path}
+                  className="uppercase cursor-pointer hover:text-amber-700 transition-colors duration-300"
+                  style={{
+                    color: item.path === "/collections" ? "#b8860b" : undefined,
+                  }}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden"
+            style={{ color: "#f0e8dc" }}
+          >
+            {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-500 ${
+            isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "1.2rem",
-            letterSpacing: "0.3em",
-            color: "#2c2218",
+            background: "rgba(15,10,4,0.96)",
+            backdropFilter: "blur(12px)",
+            borderTop: "1px solid rgba(184,134,11,0.15)",
           }}
         >
-          Mimi Couture
-        </span>
-        <ul
-          className="hidden md:flex gap-8"
-          style={{
-            fontFamily: "'Jost', sans-serif",
-            fontSize: "0.7rem",
-            letterSpacing: "0.3em",
-            color: "#7a6a58",
-          }}
-        >
-          {[
-            { name: "Home", path: "/" },
-            { name: "Collections", path: "/collections" },
-            { name: "Services", path: "/services" },
-            { name: "Lookbook", path: "/lookbook" },
-            { name: "Atelier", path: "/atelier" },
-            { name: "Contact", path: "/contact" },
-          ].map((item) => (
-            <li key={item.name}>
-              <Link
-                to={item.path}
-                className="uppercase cursor-pointer hover:text-amber-700 transition-colors duration-300"
-                style={{
-                  color: item.path === "/collections" ? "#b8860b" : undefined,
-                }}
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+          <ul
+            className="flex flex-col px-6 py-6 gap-6"
+            style={{
+              fontFamily: "'Jost', sans-serif",
+              letterSpacing: "0.25em",
+              fontSize: "0.75rem",
+            }}
+          >
+            {[
+              { name: "Home", path: "/" },
+              { name: "Collections", path: "/collections" },
+              { name: "Services", path: "/services" },
+              { name: "Lookbook", path: "/lookbook" },
+              { name: "Atelier", path: "/atelier" },
+              { name: "Contact", path: "/contact" },
+            ].map((item) => (
+              <li key={item.name}>
+                <Link
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="uppercase block transition-colors duration-300"
+                  style={{
+                    color:
+                      item.path === "/collections"
+                        ? "#b8860b"
+                        : "rgba(240,232,220,0.8)",
+                  }}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </nav>
 
       {/* ── Hero ─────────────────────────────────────────────────────── */}
