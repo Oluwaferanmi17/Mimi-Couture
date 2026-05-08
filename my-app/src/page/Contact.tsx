@@ -149,7 +149,7 @@ export default function ContactPage() {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap');
-        body { margin: 0; background: #1a1108; }
+        body { margin: 0; background: #faf9f7; }
         input::placeholder, textarea::placeholder { color: rgba(201,169,110,0.35); }
         input:focus, textarea:focus, select:focus { border-color: rgba(184,134,11,0.7) !important; }
         select option { background: #2c2218; color: #f0e8dc; }
@@ -317,7 +317,7 @@ export default function ContactPage() {
         className="relative overflow-hidden py-24 px-4"
         style={{
           background:
-            "linear-gradient(135deg, #1a1108 0%, #0f0a04 50%, #1a1108 100%)",
+            "linear-gradient(135deg, #faf9f7 0%, #0f0a04 50%, #faf9f7 100%)",
         }}
       >
         {/* Background atmosphere */}
@@ -399,7 +399,7 @@ export default function ContactPage() {
                 key={i}
                 className="text-center p-6 rounded-sm group"
                 style={{
-                  background: "rgba(255,255,255,0.03)",
+                  background: "rgba(255,255,255,0.7)",
                   border: "1px solid rgba(201,169,110,0.15)",
                   backdropFilter: "blur(8px)",
                 }}
@@ -678,7 +678,7 @@ export default function ContactPage() {
                         className="absolute inset-0"
                         style={{
                           background:
-                            "linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)",
+                            "linear-gradient(to bottom, rgba(15,15,15,0.35) 0%, rgba(15,15,15,0.65) 100%)",
                         }}
                         initial={{ x: "-100%" }}
                         whileHover={{ x: "100%" }}
@@ -952,7 +952,7 @@ export default function ContactPage() {
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(to top, rgba(26,17,8,0.85) 0%, rgba(26,17,8,0.2) 60%)",
+                      "linear-gradient(to top, rgba(15,15,15,0.75) 0%, rgba(15,15,15,0.15) 60%)",
                   }}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
